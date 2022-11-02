@@ -13,13 +13,13 @@ async def main():
 		
 		# Add task to the set. This creates a strong reference.
 		background_tasks.add(task)
-		
-	await task
-	
-	# To prevent keeping references to finished tasks forever,
-	# make each task remove its own reference from the set after
-	# completion:
-	task.add_done_callback(background_tasks.discard) # discard is a set method.
+		# To prevent keeping references to finished tasks forever,
+		# make each task remove its own reference from the set after
+		# completion:
+		task.add_done_callback(background_tasks.discard) # discard is a set method.
+
+	while len(background_tasks)!=0:
+		await task
 		
 if __name__=="__main__":
 	asyncio.run(main())
