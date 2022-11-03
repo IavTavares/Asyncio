@@ -4,7 +4,7 @@ import asyncio
 # In this documentation the term “coroutine” can be used for two closely related concepts:
 # a coroutine function: an async def function;
 
-a coroutine object: an object returned by calling a coroutine function.
+#a coroutine object: an object returned by calling a coroutine function.
 
 async def nested():
     return 42
