@@ -14,17 +14,18 @@ async def cancel_me():
 
 async def main():
     # Create a "cancel_me" Task
+    
     task = asyncio.create_task(cancel_me())
 
     # if comment out this line we go directly to -> main(): cancel_me is cancelled now
-    await asyncio.sleep(1) 
+    await asyncio.sleep(5) 
 
     # This arranges for a CancelledError exception to be thrown into the wrapped 
     # coroutine on the next cycle of the event loop.
-    task.cancel()
-    try:
-        await task
-    except asyncio.CancelledError:
-        print("main(): cancel_me is cancelled now")
+    # task.cancel()
+    # try:
+    #     await task
+    # except asyncio.CancelledError:
+    #     print("main(): cancel_me is cancelled now")
 
 asyncio.run(main())
